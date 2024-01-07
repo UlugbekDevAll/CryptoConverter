@@ -1,6 +1,8 @@
 package com.ulugbek.cryptoconverter.di
 
 import com.ulugbek.cryptoconverter.data.ConverterAPI
+import com.ulugbek.cryptoconverter.main.MainRepository
+import com.ulugbek.cryptoconverter.main.MainRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,5 +22,9 @@ object AppModule{
             .build()
             .create(ConverterAPI::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun getMainRepository(api: ConverterAPI):MainRepository=MainRepositoryImpl(api)
 
 }
