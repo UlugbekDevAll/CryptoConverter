@@ -12,11 +12,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    val mainRepository: MainRepository
+   private val mainRepository: MainRepository
 ):ViewModel() {
 
     private val _conversion= MutableStateFlow<ConvertEvent>(ConvertEvent.Empty)
     val conversion:StateFlow<ConvertEvent> get() = _conversion
+
 
     fun getConvertrate(
         from:String,
